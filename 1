@@ -2,7 +2,7 @@
 #.DEFAULT_GOAL := mkdir
 
 # variable declaration
-home_dir :=~/Office/alphav/tutorials/make-tut
+home_dir :=/home/prabhu/sudhan/jenkins/
 folder_name="myfolder"
 steps := echo mkdir
 
@@ -10,23 +10,23 @@ steps := echo mkdir
 all: echo mkdir build
 
 echo:
-        @echo "first rule"
+	@echo "first rule"
 mkdir:
-        mkdir $(home_dir)/myfolder
+	mkdir $(home_dir)/myfolder
 
 touch:
-        cd $(home_dir)/myfolder && ls -ltr  >> myfile
+	cd $(home_dir)/myfolder && ls -ltr  >> myfile
 rmdir:
-        @echo "removing directory $(home_dir)/myfolder "
-        rm -rf $(home_dir)/myfolder
+	@echo "removing directory $(home_dir)/myfolder "
+	rm -rf $(home_dir)/myfolder
 
 build: $(addprefix build-,$(steps))
-        @echo "build information : (addprefix build-,$(steps))"
+	@echo "build information : (addprefix build-,$(steps))"
 build-%:
-        @echo ''
-        @echo 'step name : $*'
+	@echo ''
+	@echo 'step name : $*'
 
 steplist:
-        for step in $(steps); do \
-          echo "this is step : $$step" ; \
-        done
+	for step in $(steps); do \
+		echo "this is step : $$step" ; \
+	done
